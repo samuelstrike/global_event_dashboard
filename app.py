@@ -371,10 +371,16 @@ class EONETData:
                 'earthquakes': 0
             }
 
+            trending_data= {
+
+            }
+
             for event in events.get('events', []):
                 try:
                     date = event['geometry'][0]['date'][:10]
                     categories = [cat['title'] for cat in event['categories']]
+
+
                     
                     # Process basic counts
                     for category in categories:
@@ -459,6 +465,7 @@ class EONETData:
             # Prepare category data
             data['categories']['labels'] = list(category_counts.keys())
             data['categories']['values'] = list(category_counts.values())
+            data['events'] = events
 
             return data
 

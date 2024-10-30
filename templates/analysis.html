@@ -121,12 +121,7 @@
                 type: 'line',
                 data: {
                     labels: [],
-                    datasets: [{
-                        label: 'Events Over Time',
-                        borderColor: '#007bff',
-                        tension: 0.1,
-                        fill: false
-                    }]
+                    datasets: []
                 },
                 options: {
                     responsive: true,
@@ -289,9 +284,52 @@
 
             console.log('Received data:', data); // Debug log
 
+            const events = data.events.events;
+            console.log(events)
+
+            const x_axis = events.map(event => new Date(event.geometry[0].date).toLocaleDateString());
+
+            const lines = {}
+
+            events.forEach(event => {
+                const category = event.categories[0].title;
+                if (!lines[category]) {
+                    lines[category] = {};
+                }
+                const eventDate = new Date(event.geometry[0].date).toLocaleDateString();
+                if (!lines[category][eventDate]) {
+                    lines[category][eventDate] = 0;
+                }
+                lines[category][eventDate] += 1;
+            });
+
+            // Ensure all dates have a value for each category
+            const allDates = [...new Set(events.map(event => new Date(event.geometry[0].date).toLocaleDateString()))];
+            Object.keys(lines).forEach(category => {
+                allDates.forEach(date => {
+                    if (!lines[category][date]) {
+                        lines[category][date] = 0;
+                    }
+                });
+            });
+
+            console.log(lines)
+
+            const borderColors = [
+                '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0',
+                '#9966FF', '#FF9F40', '#FF6384', '#36A2EB'
+            ];
+
             // Update Trends Chart
-            charts.trends.data.labels = data.trends.labels;
-            charts.trends.data.datasets[0].data = data.trends.values;
+            charts.trends.data.labels = allDates;
+            charts.trends.data.datasets = Object.entries(lines).map(([category, values]) => {
+                return {
+                    label: category,
+                    data: Object.values(values),
+                    fill: false,
+                    borderColor: borderColors.pop()
+                }
+            });
             charts.trends.update();
 
             // Update Categories Chart
