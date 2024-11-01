@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EONET Dashboard Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+            --section-bg: #ffffff;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-color);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .dashboard-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .dashboard-btn:hover {
+            background: #0d47a1;
+        }
+
+        .section {
+            background: var(--section-bg);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .section h3 {
+            color: #444;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style-position: inside;
+            margin: 1rem 0;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-card h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Enhancing Environmental Awareness: The role of NASA’s EONET API in Real-time Data Visualization and Analysis</h1>
+            <p>Monitor and analyze natural events across the globe</p>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="container nav-content">
+            <!-- <div class="nav-links">
+                <a href="#introduction">Introduction</a>
+                <a href="#goals">Goals</a>
+                <a href="#audience">Audience</a>
+                <a href="#data">Data</a>
+                <a href="#findings">Findings</a>
+            </div> -->
+            <a href="/dashboard" class="dashboard-btn">
+                <i class="fas fa-chart-line"></i> Launch Dashboard
+            </a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="introduction" class="section">
+            <h2>Introduction</h2>
+            <p>The Earth Observatory Natural Event Tracker (EONET) Dashboard transforms NASA's complex environmental data into accessible visualizations for monitoring and analyzing global natural events. This platform serves as a comprehensive tool for tracking 13 different categories of natural phenomena, from wildfires to volcanic activity, providing real-time insights and historical analysis capabilities.</p>
+        </section>
+
+        <section id="goals" class="section">
+            <h2>Problem & Goals</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Problem Definition</h3>
+                    <p>While EONET provides invaluable data on global natural events, the complexity of this information creates barriers to widespread understanding and utilization.</p>
+                </div>
+                <div class="card">
+                    <h3>Goal</h3>
+                    <p>To transform complex environmental data into accessible, interactive visual representations that facilitate broader analysis of Earth's dynamic natural processes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="audience" class="section">
+            <h2>Target Audience</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3><i class="fas fa-microscope"></i> Research & Academia</h3>
+                    <ul>
+                        <li>Academic Researchers</li>
+                        <li>Scientists</li>
+                        <li>Educators</li>
+                        <li>Students</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-building-government"></i> Government & Response</h3>
+                    <ul>
+                        <li>Government Officials</li>
+                        <li>Emergency Responders</li>
+                        <li>Policy Makers</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-users"></i> Public & Media</h3>
+                    <ul>
+                        <li>Journalists</li>
+                        <li>NGOs</li>
+                        <li>General Public</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="data" class="section">
+            <h2>Dataset Overview</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Key Characteristics</h3>
+                    <ul>
+                        <li>Real-time updates</li>
+                        <li>Global geographic scope</li>
+                        <li>13 distinct event categories</li>
+                        <li>Precise geospatial data</li>
+                        <li>Temporal markers for trend analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="data" class="section">
+            <h2>Key Findings</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <!-- <h3>Key Characteristics</h3> -->
+                    <ul>
+                        <li>Wildfires are the most frequently recorded events</li>
+                        <li>Significant seasonal patterns in event occurrence</li>
+                        <li>Geographic clustering of specific event types</li>
+                        <li>Temporal trends showing increased frequency</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="data" class="section">
+            <h2>Hypotheses</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <!-- <h3>Key Characteristics</h3> -->
+                    <ul>
+                        <ul>
+                            <li><strong>Increased Frequency of Extreme Events:</strong> Climate change is leading to increased frequency and intensity of extreme weather events</li>
+                            <li><strong>Regional Vulnerability:</strong> Certain geographical regions show higher susceptibility to specific natural events</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="data" class="section">
+            <h2>Team Members</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <!-- <h3>Key Characteristics</h3> -->
+                    <ul>
+                        <li>Birendra Bhujel: 34947336</li>
+                        <li>Karma Dechen Dema : 34752318</li>
+                        <li>Jigmi Dorji: 34647859</li>
+                        <li>Samuel Pradhan: 34625823</li>
+                        <li>Yoezer Dema: 34901195</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 ICT605 Group Project. Data provided by NASA Earth Observatory Natural Event Tracker.</p>
+        </div>
+    </footer>
+</body>
+</html>

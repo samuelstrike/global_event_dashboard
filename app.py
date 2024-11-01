@@ -503,6 +503,12 @@ class EONETData:
 eonet_data = EONETData()
 
 @app.route('/')
+def main():
+    """Main dashboard route"""
+    
+    return render_template('main.html')
+
+@app.route('/dashboard')
 def index():
     """Main dashboard route"""
     events = eonet_data.get_filtered_events()
