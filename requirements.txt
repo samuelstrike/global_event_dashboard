@@ -20,3 +20,4 @@ tzdata==2023.3
 urllib3==2.0.4
 Werkzeug==2.3.7
 xyzservices==2023.7.0
+pytest
